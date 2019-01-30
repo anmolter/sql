@@ -1,6 +1,10 @@
---First of all, tell SQL Server to use the ExampleDatabase.
+# 1. Select Queries
+## Connect to database
+First of all, tell SQL Server to use the ExampleDatabase.
+```SQL
 USE ExampleDatabase;
---Select queries are used to get data from a table. The most basic form is:
+```
+Select queries are used to get data from a table. The most basic form is:
 SELECT *
 FROM person.info;
 --This query gets all columns and all rows from the person.info table and displays them in the Results window below. This query is very useful to quickly view data stored in table; however, if the table is very large, it may take a while to get all of the data. In that case it may be better to restrict the selct query to to the top n rows, by using:
