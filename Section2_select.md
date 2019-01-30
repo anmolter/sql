@@ -56,41 +56,48 @@ WHERE dob='1986-05-04';
 ```
 The WHERE clause allows the following operators: make a table with examples
 <table>
-<tr>
-<th>Operator</th>
-<th>Meaning</th>
-<th>Example</th>	
-</tr>
-<tr>
-
-<td>
-<pre>
-><br/><br/>
-</pre>
-</td>
-<td>
-Greater than<br/><br/>	
-<td>
-<pre lang="sql">
-SELECT* 
-FROM person.info 
-WHERE dob>'1986-05-04';
-</pre>
-</td>
-
-</tr>
+	<tr>
+		<th>Operator</th>
+		<th>Meaning</th>
+		<th>Example</th>
+	</tr>
+	<tr>
+		<td>
+			><br/><br/>
+		</td>
+		<td>
+			Greater than<br/><br/>	
+		</td>
+		<td>
+			<pre lang="sql">
+			SELECT *
+			FROM person.info
+			WHERE dob > '1986-05-04';
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<<br/><br/>
+		</td>
+		<td>
+			Less than
+		</td>
+		<td>
+			<pre lang="sql">
+			SELECT*
+			FROM person.info
+			WHERE dob<'1986-05-04';
+			</pre>
+		</td>
+	</tr>	
 </table>
 
 
 
 
-|Operator|Meaning|Example|
-|---|---|---|
-|>|greater than|SELECT*<br>FROM person.info<br>WHERE dob>'1986-05-04';|
---< (less than)
-SELECT*
-FROM person.info
-WHERE dob<'1986-05-04';
+
+
 
 --= (equals)
 SELECT*
