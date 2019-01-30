@@ -1,35 +1,51 @@
-# 1. Select Queries
+# 2. Select Queries
 ## Connect to database
 First of all, tell SQL Server to use the ExampleDatabase.
 ```SQL
 USE ExampleDatabase;
 ```
+## Basic select query
 Select queries are used to get data from a table. The most basic form is:
+```SQL
 SELECT *
 FROM person.info;
---This query gets all columns and all rows from the person.info table and displays them in the Results window below. This query is very useful to quickly view data stored in table; however, if the table is very large, it may take a while to get all of the data. In that case it may be better to restrict the selct query to to the top n rows, by using:
+```
+This query gets all columns and all rows from the person.info table and displays them in the Results window. This query is very useful to quickly view data stored in a table; however, if the table is very large, it may take a while to get all of the data. In that case it may be better to restrict the select query to to the top n rows, by using:
+```SQL
 SELECT TOP(10)*
-FROM person.info;  
---This query only shows the first 10 rows of the person.info table (it is similar to the head function in R). 
---The SELECT part of the query tells SQL which columns to get from the table. If there is a * (aka wildcard) after select, then all columns will be selected. However, it is possible to select only a subset of columns, by separating the column names with commas:
+FROM person.info;
+```
+This query only shows the first 10 rows of the person.info table (it is similar to the head function in R). 
+
+The SELECT part of the query tells SQL which columns to get from the table. If there is a * (aka wildcard) after select, then all columns will be selected. However, it is possible to select only a subset of columns, by separating the column names with commas:
+```SQL
 SELECT dob
 	,sex
 FROM person.info;
---ALIASES 
---Aliases can be used to give a temporary name to a column. This means that the Results window will display the Alias name of teh column, not the actual stored name of the column. To create an alias type in AS after the original column name, followed by the alias name:
+```
+## Aliases 
+Aliases can be used to give a temporary name to a column. This means that the Results window will display the Alias name of the column, not the actual stored name of the column. To create an alias type in AS after the original column name, followed by the alias name:
+```SQL
 SELECT subjectID
 	,dob AS DateOfBirth
 FROM person.info;		
---Typing in AS is actually not necessary for this. Many SQL users will simply type the alias name after the original name:
- SELECT subjectID
+```
+Typing in AS is actually not necessary for this. Many SQL users will simply type the alias name after the original name:
+```SQL
+SELECT subjectID
 	,dob DateOfBirth
 FROM person.info;
---However, for readibility it is often better to include AS. Aliases can also be used to assign temporary names to tables, which is particularly useful in join queries, which will be described in a bit. 
---The SELECT part of a query determines, which columns to get. To get a subset of rows a WHERE clause is added after the name of the table. For example, to select all current smokers from the questionnaire.recruitment table:
+```
+However, for readibility it is often better to include AS. Aliases can also be used to assign temporary names to tables, which is particularly useful in join queries, which will be explained in a lter section.
+## Where clauses
+The SELECT part of a query determines, which columns to get. To get a subset of rows a WHERE clause is added after the name of the table. For example, to select all current smokers from the questionnaire.recruitment table:
+```SQL
 SELECT *
 FROM questionnaire.recruitment
 WHERE smoker=2;
---To select a subset of rows based on a text column or a date/time column, single quotes need to be placed around the value:
+```
+To select a subset of rows based on a text column or a date/time column, single quotes must be placed around the value:
+```SQL
 SELECT*
 FROM questionnaire.recruitment
 WHERE fav_col='yellow';
@@ -37,13 +53,12 @@ WHERE fav_col='yellow';
 SELECT*
 FROM person.info
 WHERE dob='1986-05-04';
--- The WHERE clause allows the following operators: make a table with examples
+```
+The WHERE clause allows the following operators: make a table with examples
 
--- > (greater than)
-SELECT*
-FROM person.info
-WHERE dob>'1986-05-04';
-
+|Operator|Meaning|Example|
+|---|---|---|
+|>|greater than|```SQL SELECT*<br>FROM person.info<br>WHERE dob>'1986-05-04';```|
 --< (less than)
 SELECT*
 FROM person.info
