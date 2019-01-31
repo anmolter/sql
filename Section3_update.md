@@ -1,8 +1,12 @@
---Connect to database
+# 3. Update queries and built-in functions
+## Connect to database
+```SQL
 USE ExampleDatabase;
---First of all a warning: UPDATE queries will permanently overwrite data in a column! Therefore, it is often best to create a new (empty) column first and to update this column, rather than overwriting existing data. UPDATE queries can be used with mathematical, text, date and logical functions. They can also add data from another table, which will be covered in the section on JOINS. The mathematical, text, date and logical functions shown in this section can also be used in SELECT queries. As shown in the previous section, SELECT queries do not change the exsiting tables; therefore, it can be helpful to run a SELECT query first, to check if the function creates the desired result and then to modify the syntax into an UPDATE query.
---BASICS 
---In it's most basic application, an UPDATE query can be used to copy data from one origin column to another target column . 
+```
+## Basic update query
+First of all a warning: **UPDATE queries will permanently overwrite data in a column!** Therefore, it is often best to create a new (empty) column first and to update this column, rather than overwriting existing data. UPDATE queries can be used with mathematical, text, date and logical functions. They can also add data from another table, which will be covered in the section on JOINS. The mathematical, text, date and logical functions shown in this section can also be used in SELECT queries. As shown in the previous section, SELECT queries do not change the exsiting tables; therefore, it can be helpful to run a SELECT query first, to check if the function creates the desired result and then to modify the syntax into an UPDATE query.
+
+In it's most basic application, an UPDATE query can be used to copy data from one origin column to another target column. 
 ALTER TABLE questionnaire.recruitment --create new column
 ADD smoker_2 int NULL; --same data type as original column
 GO
