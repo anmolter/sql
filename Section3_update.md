@@ -105,7 +105,7 @@ The result is shown with a greater number of decimal places than specified in th
 			absolute value of a number
 			</td>
 		<td>
-			<pre lang="sql">
+			<pre lang="sql" align="left">
 			SELECT*
 				,ABS(temperature) as abs_temp
 			FROM env.temperature;
@@ -477,6 +477,6 @@ SELECT *
 FROM person.info;
 ```
 
-<\details>
+</details>
 
 
