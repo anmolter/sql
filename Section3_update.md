@@ -247,8 +247,11 @@ SELECT *
 	,CRYPT_GEN_RANDOM(2)%100 AS random
 FROM person.info
 ```
-# Exercise
+### Exercise
 Add two columns to the env.temperature table. In the first column calculate the temperature in Kelvin. In the second column calculate the temperature in Fahrenheit.
+<details>
+	<summary>Click to see solution</summary>
+	
 ```SQL 
 ALTER TABLE env.temperature
 ADD kelvin decimal(6,2) NULL
@@ -261,9 +264,13 @@ UPDATE env.temperature
 SELECT *
 FROM env.temperature
 ```
---String functions
---Concatenate
--- The CONCAT function can be used to concatenate two or more columns or user specified strings. The columns can have any data type; however, SQL will convert the data into strings, therefore the resulting columns will be a text column. If a user speficied string is used, it must be enclosed in single quotes. 
+
+</details>
+
+## String functions
+### Concatenate
+The CONCAT function can be used to concatenate two or more columns or user specified strings. The columns can have any data type; however, SQL will convert the data into strings, therefore the resulting columns will be a text column. If a user speficied string is used, it must be enclosed in single quotes. 
+```SQL
 ALTER TABLE questionnaire.recruitment
 ADD fav_col_fruit varchar(20) NULL
 	,fav_col_date varchar(20) NULL
@@ -273,30 +280,40 @@ UPDATE questionnaire.recruitment
 	SET fav_col_fruit = CONCAT(fav_col,fav_fruit)
 		,fav_col_date = CONCAT(fav_col,'2019-01-23')
 		,smoker_alcohol = CONCAT(smoker,'_',alcohol);	 
+```
 
---Length
---The LEN function can be used to count the number of characters in a cell. It only works with text data type, not with numeric or date data types. It will count ALL characters, including white spaces.
+### Length
+The LEN function can be used to count the number of characters in a cell. It only works with text data type, not with numeric or date data types. It will count ALL characters, including white spaces.
+```SQL
 SELECT *
 	,LEN(fav_col) AS length_colour
 	,LEN(fav_fruit) AS length_fruit
 	,LEN(fav_col_fruit) AS length_both
 	,LEN(fav_col)+LEN(fav_fruit) AS length_check
 	,LEN(smoker_alcohol) AS length_smok_alc
-FROM questionnaire.recruitment
+FROM questionnaire.recruitment;
 
 SELECT LEN('1 2 3 4 5    ')--white spaces are counted
---Remove or replace characters
---To remove leading or trailing white spaces from a string the LTRIM and RTRIM functions can be used. LTRIM will remove all white spaces to the left of the first character, RTRIM will remove all white spaces to the right of the last character. 
+```
+### Remove or replace characters
+To remove leading or trailing white spaces from a string the LTRIM and RTRIM functions can be used. LTRIM will remove all white spaces to the left of the first character, RTRIM will remove all white spaces to the right of the last character. 
+``SQL
 SELECT LEN(LTRIM('   12345')) AS fromLeft;
 SELECT LEN(RTRIM('12345   ')) AS fromRight;
---SQL Server 2017 upwards also has the TRIM function. TRIM will remove white space from anywhere in a string. It can also be used to remove specific characters from a string. In SQL Server 2012, the same can be achived with the REPLACE function. TH REPLCAE function uses the following syntax REPLACE('a string','characters to be replaced','new characters'). So to remove all white spaces you could use:
+```
+SQL Server 2017 upwards also has the TRIM function. TRIM will remove white space from anywhere in a string. It can also be used to remove specific characters from a string. In SQL Server 2012, the same can be achived with the REPLACE function. The REPLCAE function uses the following syntax REPLACE('a string','characters to be replaced','new characters'). So to remove all white spaces you could use:
+ ```SQL
  SELECT REPLACE('  1 2 3 4 5    ',' ','')
---REPLACE can change any character pattern:
+```
+REPLACE can change any character pattern:
+```SQL
 SELECT*
 	,REPLACE(fav_col,'bl','xx') as new_col
-FROM questionnaire.recruitment
---Extract part of a string
---Useful functions to extract part of a string are LEFT,RIGHT, SUBSTRING and CHARINDEX. LEFT extracts the first n characteers from a string by using LEFT('a string', number of characters). The RIGHT syntax works in the same way, but extracts the last n characters from a string. The SUBSTRING function can extract from anywhere in a string by specifying a starting position and the number of characters after the starting position. CHARINDEX is useful when the starting position or the number of characters to be extracted varies. For example, the first part of a postcode can vary in length from 2 to 4 characters; therefore to extract the first part of a postcode, you could use CHARINDEX to find the white space separating the first and second part of the postcode and then use this with a LEFT function. The CHARINDEX syntax requires a character to be found, a string to be searched, and can optionally have a starting position: CHARINDEX('character to be found','a string to be searched','optional starting position'.
+FROM questionnaire.recruitment;
+```
+### Extract part of a string
+Useful functions to extract part of a string are LEFT,RIGHT, SUBSTRING and CHARINDEX. LEFT extracts the first n characteers from a string by using LEFT('a string', number of characters). The RIGHT syntax works in the same way, but extracts the last n characters from a string. The SUBSTRING function can extract from anywhere in a string by specifying a starting position and the number of characters after the starting position. CHARINDEX is useful when the starting position or the number of characters to be extracted varies. For example, the first part of a postcode can vary in length from 2 to 4 characters; therefore to extract the first part of a postcode, you could use CHARINDEX to find the white space separating the first and second part of the postcode and then use this with a LEFT function. The CHARINDEX syntax requires a character to be found, a string to be searched, and can optionally have a starting position: CHARINDEX('character to be found','a string to be searched','optional starting position'.
+```SQL
 SELECT *
 	,LEFT(fav_col_fruit,5) as leftstring
 	,RIGHT(fav_col_date,10) as rightstring -- the result shown is a still a string, not a date!
@@ -308,17 +325,21 @@ SELECT*
 	,LEFT(postcode,CHARINDEX(' ',postcode)-1) AS firstPart
 	,SUBSTRING(postcode,CHARINDEX(' ',postcode)+1,LEN(postcode)-CHARINDEX(' ',postcode)) as secondPart
 FROM person.info	 
--- For a list of all string functions go to: https://docs.microsoft.com/en-us/sql/t-sql/functions/string-functions-transact-sql?view=sql-server-2017
+```
+For a list of all string functions go to: https://docs.microsoft.com/en-us/sql/t-sql/functions/string-functions-transact-sql?view=sql-server-2017
 
---Date functions
---Timestamp
---SQL can add timestamps to data. The most commonly functions for this are SYSDATETIME and CURRENT_TIMESTAMP. They only differ in the number of fractional seconds they provide. Obvioulsy, these functions are most useful when adding rows to a table, but they can be used at any time. 
+## Date functions
+### Timestamp
+SQL can add timestamps to data. The most commonly functions for this are SYSDATETIME and CURRENT_TIMESTAMP. They only differ in the number of fractional seconds they provide. Obvioulsy, these functions are most useful when adding rows to a table, but they can be used at any time. 
+```SQL
 SELECT*
 	,SYSDATETIME() AS sysdate
 	,CURRENT_TIMESTAMP as curr_timestamp
 FROM person.info
---Adding or subtracting time
---The DATEADD function can add or subtract timeperiods specified in a number of units ranging from nanoseconds to years. For a full list of available units see: https://docs.microsoft.com/en-us/sql/t-sql/functions/dateadd-transact-sql?view=sql-server-2017 . The function uses the following syntax: DATEADD('unit of timeperiod to be added, e.g. year or minute', 'number of timeperiods to be added', 'date to which timeperiod should be added').
+```
+### Adding or subtracting time
+The DATEADD function can add or subtract timeperiods specified in a number of units ranging from nanoseconds to years. For a full list of available units see: https://docs.microsoft.com/en-us/sql/t-sql/functions/dateadd-transact-sql?view=sql-server-2017 . The function uses the following syntax: DATEADD('unit of timeperiod to be added, e.g. year or minute', 'number of timeperiods to be added', 'date to which timeperiod should be added').
+```SQL
 SELECT *
 	,DATEADD(month,12,dob) as months12after
 	,DATEADD(month,-12,dob) as months12before
@@ -327,21 +348,23 @@ FROM person.info;
 SELECT *
 	,DATEADD(minute,10,vDateTime) as plus10minutes
 FROM env.pollutant;
-
---Calculating the difference between dates and times
---The DATEDIFF function can calculate the difference between two dates or datetimes in a number of units. It is similar to the DATEADD function in that you need to specify a unit for the timeperiod. The syntax is DATEDIFF('unit of timeperiod, e.g. day or hour','start date','end date').
+```
+### Calculating the difference between dates and times
+The DATEDIFF function can calculate the difference between two dates or datetimes in a number of units. It is similar to the DATEADD function in that you need to specify a unit for the timeperiod. The syntax is DATEDIFF('unit of timeperiod, e.g. day or hour','start date','end date').
+```SQL
 SELECT *
 	,DATEDIFF(year,dob,SYSDATETIME()) as agenow
-FROM person.info
+FROM person.info;
 
 SELECT *
 	,DATEDIFF(year,t2.dob,t1.vDate) as ageAtVisit
 FROM person.schedule AS t1
 LEFT JOIN person.info AS t2
-	on t1.subjectID=t2.subjectID
-
---Combining into date or extracting from date
---Dates can be created by providing integers for the year, month, and day using the DATEFROMPARTS(year,month,day) syntax. This can be useful when dates in the original dataset are recorded in an awkward format and need to be imported as a text string. 
+	on t1.subjectID=t2.subjectID;
+```
+### Combining into date or extracting from date
+Dates can be created by providing integers for the year, month, and day using the DATEFROMPARTS(year,month,day) syntax. This can be useful when dates in the original dataset are recorded in an awkward format and need to be imported as a text string. 
+```SQL
 --Example of awkward dates
 CREATE TABLE #tempdate
 (weirddate varchar(10) NULL); 
@@ -373,25 +396,32 @@ UPDATE #tempdate
 UPDATE #tempdate
 	SET vDate = DATEADD(year,2000,vDate)
 WHERE vDate < '2000-01-01';
-
---the DATEPART function can be used on existing dates. It can extract any part of a date, but is particularly useful to extract the weekday or the day of the year. 
+```
+The DATEPART function can be used on existing dates. It can extract any part of a date, but is particularly useful to extract the weekday or the day of the year. 
+```SQL
 SELECT*
 	,DATEPART(weekday,dob) as dobWeekday --in the default setting Sunday = 1!
 	,DATEPART(quarter,dob) as dobQuarter
-FROM person.info
+FROM person.info;
+```
 
---Logical expressions
---The CHOOSE function can be used to select something from a list based on an integer value. The syntax is CHOOSE(integer index, 'list of things to choose from separated by commas').
+## Logical expressions
+The CHOOSE function can be used to select something from a list based on an integer value. The syntax is CHOOSE(integer index, 'list of things to choose from separated by commas').
+```SQL
 SELECT*
 	,CHOOSE(DATEPART(weekday,dob),'Sun','Mon','Tue','Wed','Thu','Fri','Sat') as dobWeekday
-FROM person.info
---The most common logical expressions are conditional statements (aka if...else statements). SQL Server uses the CASE syntax for conditional statements.
---CASE 'name of a column to be checked or can be left blank'
---WHEN 'condition to be checked'
---THEN 'what to do if condition is true'
---ELSE 'what to do if condition is false, this is optional, if no else option is specified, cells where the condition is false will be set to NULL'
---END
---You can use multiple WHEN ... THEN... statements.
+FROM person.info;
+```
+The most common logical expressions are conditional statements (aka if...else statements). SQL Server uses the CASE syntax for conditional statements.
+
+CASE 'name of a column to be checked or can be left blank'
+WHEN 'condition to be checked'
+THEN 'what to do if condition is true'
+ELSE 'what to do if condition is false, this is optional, if no else option is specified, cells where the condition is false will be set to NULL'
+END
+
+You can use multiple WHEN ... THEN... statements.
+```SQL
 ALTER TABLE person.info
 ADD gender_case varchar(6);
 GO
@@ -411,15 +441,21 @@ UPDATE health.physical
 			WHEN bmi_cat = 'normal' THEN 0
 			WHEN bmi_cat = 'overweight' THEN 1
 			WHEN bmi_cat = 'underweight' THEN -1
-		END
---The same operators that are used in where clauses, can be used in CASE statements
+		END;
+```		
+The same operators that are used in where clauses, can be used in CASE statements.
+```SQL
 SELECT *
 	,CASE
 		WHEN height>190 AND weight<60 THEN 'tall & light'
 	END AS bmi_text
 FROM health.physical
---EXERCISE
---Add a column to the person.info table called postcode8. In this column show the postcode with 8 characters,i.e. if a postcode is already 8 characters long, copy it as is, if it is shorter add more whitespace to the whitespace in the middle, so that it becomes 8 characters long.
+```
+# Exercise
+Add a column to the person.info table called postcode8. In this column show the postcode with 8 characters,i.e. if a postcode is already 8 characters long, copy it as is, if it is shorter add more whitespace to the whitespace in the middle, so that it becomes 8 characters long.
+<details>
+	<summary>Click to see solution</summary>
+	
 ALTER TABLE person.info
 ADD postcode8 varchar(8) NULL;
 GO
@@ -435,5 +471,6 @@ SELECT *
 	,LEN(postcode8)
 FROM person.info
 
+<\details>
 
 
