@@ -103,9 +103,9 @@ The result is shown with a greater number of decimal places than specified in th
 		</td>
 		<td>
 			absolute value of a number
-			</td>
+		</td>
 		<td>
-			<pre lang="sql" align="left">
+			<pre lang="sql" style="text-align: left;">
 			SELECT*
 				,ABS(temperature) as abs_temp
 			FROM env.temperature;
