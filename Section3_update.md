@@ -91,60 +91,165 @@ FROM health.bloodpressure
 The result is shown with a greater number of decimal places than specified in the CAST or CONVERT statement. This link https://docs.microsoft.com/en-us/sql/t-sql/data-types/precision-scale-and-length-transact-sql?view=sql-server-2017 shows how the precision is set for different arithmetic operations. For divisions the minimum precision is 6 decimal places. 
 
 ## Mathematical functions
---ABS absolute value of a number
-SELECT*
-	,ABS(temperature) as abs_temp
-from env.temperature;
---POWER raises value to specified power. 
-SELECT*
-	,POWER(temperature,3) as power_temp
-FROM env.temperature;
-SELECT*
-	,POWER(concentration,0.5) as squareroot_conc 
-FROM env.pollutant
+<table>
+	<tr>
+		<th>Function</th>
+		<th>Meaning</th>
+		<th>Example</th>
+	</tr>
+	<tr>
+		<td>
+			ABS 
+		</td>
+		<td>
+			absolute value of a number
+			</td>
+		<td>
+			<pre lang="sql">
+			SELECT*
+				,ABS(temperature) as abs_temp
+			FROM env.temperature;
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			POWER 
+		</td>
+		<td>
+			raises value to specified power 
+		</td>
+		<td>
+			<pre lang="sql">
+			SELECT*
+				,POWER(temperature,3) as power_temp
+			FROM env.temperature;
+			SELECT*
+				,POWER(concentration,0.5) as squareroot_conc 
+			FROM env.pollutant
+			</pre>
+		</td>
+	</tr>	
+	<tr>
+		<td>
+			SQUARE 	
+		</td>
+		<td>
+			square of a number
+		</td>
+		<td>
+			<pre lang="sql">
+			SELECT*
+				SQUARE(concentration) as square_conc
+			FROM env.pollutant	
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			SQRT 		
+		</td>
+		<td>
+			square root of a number
+		</td>
+		<td>
+			<pre lang="sql">
+			SELECT*
+				SQRT(concentration) as squareroot_conc
+			FROM env.pollutant
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			EXP 
+		</td>
+		<td>
+			exponential (raises value to base e)
+		</td>
+		<td>
+			<pre lang="sql">
+			SELECT*
+				,EXP(concentration) AS exp_conc
+			FROM env.pollutant
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			LOG 
+		</td>
+		<td>
+			logarithm of a number, base is optional, by default the natural logarithm will be calculated
+		</td>
+		<td>
+			<pre lang="sql">
+			SELECT*
+				,LOG(concentration) AS ln_conc
+				,LOG(concentration,5) AS logbase5_conc
+			FROM env.pollutant
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			LOG10	
+		</td>
+		<td>
+			logarithm of a number with base 10	
+		</td>
+		<td>
+			<pre lang="sql">
+			SELECT*
+				,LOG10(concentration) AS lg_conc
+			FROM env.pollutant
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			SIGN 
+		</td>
+		<td>
+			returns -1,0 or +1
+		</td>
+		<td>
+			<pre lang="sql">
+			SELECT*
+				,SIGN(temperature)
+			FROM env.temperature	
+			</pre>
+		</td>
+	</tr>
+</table>
 
---SQUARE square of a number
---SQRT square root of a number 
-SELECT*
-	,SQUARE(concentration) as square_conc
-	,SQRT(concentration) as squareroot_conc
-FROM env.pollutant
 
---EXP exponential (raises value to base e)
---LOG logarithm of a number, base is optional, by default the natural logarithm will be calculated
---LOG10 logarithm of a number with base 10
-SELECT*
-	,EXP(concentration) AS exp_conc
-	,LOG(concentration,5) AS logbase2_conc
-	,LOG(concentration) AS ln_conc
-	,LOG10(concentration) AS lg_conc
-FROM env.pollutant
-
---SIGN returns -1,0 or +1
-SELECT*
-	,SIGN(temperature)
-FROM env.temperature
-
---Rounding
---The ROUND function will round to a specified number of decimal places. If a negative number is specified SQL will round to that number of places to the left of the decimal point, i.e. -1 will round to tens, -2 will round to hundreds and so on. The FLOOR and CEILING functions can be used to always round down or up. However, these always round to an integer.
+## Rounding
+The ROUND function will round to a specified number of decimal places. If a negative number of decimal places is specified SQL will round to that number of places to the left of the decimal point, i.e. -1 will round to tens, -2 will round to hundreds and so on. The FLOOR and CEILING functions can be used to always round down or up. However, these always round to an integer.
+```SQL 
 SELECT *
 	,ROUND(CAST(BP_systolic AS NUMERIC(4,1))/CONVERT(numeric(5,2),BP_diastolic),2) AS division_decimals
 	,ROUND(BP_systolic,-1) AS negative_round
 	,FLOOR(CAST(BP_systolic AS NUMERIC(4,1))/CONVERT(numeric(5,2),BP_diastolic)) AS rounddown
 	,CEILING(CAST(BP_systolic AS NUMERIC(4,1))/CONVERT(numeric(5,2),BP_diastolic)) AS roundup
 FROM health.bloodpressure
-
---Random numbers
+```
+## Random numbers
 --The RAND function will return a pseudo-random number between 0 and 1.
+```SQL
 SELECT *
 	,RAND(100) AS random
 FROM person.info
---However, every row in the random column, shows the same number, because the RAND function only ran once. To add a different random number in each, you could add a loop that runs RAND() multiple times (Maybe explained later) or you could use the quick fix below. CRYPT_GEN_RANDOM() generates cryptographic randomly generated hexadecimal numbers. The number between the brackets is the length of the hexadecimal in bytes. The modulo is used to convert the hexadecimal into an integer. The random numbers generated range from 0 to n-1, where n is the number used in the modulo. 
+```
+However, every row in the random column, shows the same number, because the RAND function only ran once. To add a different random number in each, you could add a loop that runs RAND() multiple times or you could use the quick fix below. CRYPT_GEN_RANDOM() generates cryptographic randomly generated hexadecimal numbers. The number between the brackets is the length of the hexadecimal in bytes. The modulo is used to convert the hexadecimal into an integer. The random numbers generated range from 0 to n-1, where n is the number used in the modulo. 
+```SQL
 SELECT *
 	,CRYPT_GEN_RANDOM(2)%100 AS random
 FROM person.info
---EXERCISE
---Add two columns to the env.temperature table. In the first column calculate the temperature in Kelvin. In the second column calculate the temperature in Fahrenheit.
+```
+# Exercise
+Add two columns to the env.temperature table. In the first column calculate the temperature in Kelvin. In the second column calculate the temperature in Fahrenheit.
+```SQL 
 ALTER TABLE env.temperature
 ADD kelvin decimal(6,2) NULL
 	,fahrenheit decimal(6,2) NULL;
@@ -153,8 +258,9 @@ UPDATE env.temperature
 	SET kelvin=temperature+273.15
 		,fahrenheit=temperature*1.8+32;
 
-select*
-from env.temperature
+SELECT *
+FROM env.temperature
+```
 --String functions
 --Concatenate
 -- The CONCAT function can be used to concatenate two or more columns or user specified strings. The columns can have any data type; however, SQL will convert the data into strings, therefore the resulting columns will be a text column. If a user speficied string is used, it must be enclosed in single quotes. 
