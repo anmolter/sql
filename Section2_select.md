@@ -319,32 +319,36 @@ WHERE (alcohol = 1 OR smoker = 2) AND fav_col LIKE 'bl%';
 ```
 ### Exercises
 1. From the env.centralweather table select all dates with temperatures below zero
+
 <details>
 	<summary>Click to see solution</summary>
 	
-	```SQL
-	SELECT date
-	FROM env.centralweather
-	WHERE temperature<0;
-	```
+```SQL
+SELECT date
+FROM env.centralweather
+WHERE temperature<0;
+```
 
 </details>
-	
+
+
 2. From the health.physical table select all participants taller than 195cm and smaller than 155cm.
+
 <details>
 	<summary>Click to see solution</summary>
 	
-	```SQL
-	SELECT *
-	FROM health.physical
-	WHERE height < 155 OR height > 195;
-	--Alternative solution:
-	SELECT *
-	FROM health.physical
-	WHERE height NOT BETWEEN 155 AND 195;
-	```
-	
+```SQL
+SELECT *
+FROM health.physical
+WHERE height < 155 OR height > 195;
+--Alternative solution:
+SELECT *
+FROM health.physical
+WHERE height NOT BETWEEN 155 AND 195;
+```
+
 </details>	
+
 
 ## Sorting
 Rows can be sorted using ORDER BY followed by a column name. The default is to sort in ascending order. To sort in descending order DESC needs to be added after the column name.
