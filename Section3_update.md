@@ -7,27 +7,35 @@ USE ExampleDatabase;
 First of all a warning: **UPDATE queries will permanently overwrite data in a column!** Therefore, it is often best to create a new (empty) column first and to update this column, rather than overwriting existing data. UPDATE queries can be used with mathematical, text, date and logical functions. They can also add data from another table, which will be covered in the section on JOINS. The mathematical, text, date and logical functions shown in this section can also be used in SELECT queries. As shown in the previous section, SELECT queries do not change the exsiting tables; therefore, it can be helpful to run a SELECT query first, to check if the function creates the desired result and then to modify the syntax into an UPDATE query.
 
 In it's most basic application, an UPDATE query can be used to copy data from one origin column to another target column. 
+```SQL
 ALTER TABLE questionnaire.recruitment --create new column
 ADD smoker_2 int NULL; --same data type as original column
 GO
 UPDATE questionnaire.recruitment
 	SET smoker_2=smoker; --target column = origin column
---If the target column has the same data type as the origin column, the UPDATE function should run without problems. If the target column has a different data type than the origin column, SQL Server will try to convert the original data type to work with the target data type. This conversion is invisble to the user and is called an implicit conversion. This link https://docs.microsoft.com/en-us/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017 shows a table of implicit 
---For more control, explicit data conversion can be used via the CAST or CONVERT function. In most cases CAST and CONVERT are interchangeable, i.e. they will produce the same result. Therefore, it often comes down to personal preference; however, one exception is dates. For coverting date or datetime columns, the CONVERT function is recommended, because it allows an output style to be specfied (see https://teamsql.io/blog/?p=1455 and https://docs.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql?view=sql-server-2017).
+```
+If the target column has the same data type as the origin column, the UPDATE function should run without problems. If the target column has a different data type than the origin column, SQL Server will try to convert the original data type to work with the target data type. This conversion is invisble to the user and is called an implicit conversion. This link https://docs.microsoft.com/en-us/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017 shows a matrix of the conversion between data types.
+
+For more control, explicit data conversion can be used via the CAST or CONVERT function. In most cases CAST and CONVERT are interchangeable, i.e. they will produce the same result. Therefore, it often comes down to personal preference; however, one exception is dates. For coverting date or datetime columns, the CONVERT function is recommended, because it allows an output style to be specfied (see https://teamsql.io/blog/?p=1455 and https://docs.microsoft.com/en-us/sql/t-sql/functions/cast-and-convert-transact-sql?view=sql-server-2017).
+```SQL
 ALTER TABLE person.info
 ADD dob_text varchar(10);
 --CAST
 UPDATE person.info
 	SET dob_text=CAST(dob AS varchar(10)); 
---CAST will convert the date into a string in  the same format as it is stored as a date. 
+```
+CAST will convert the date into a string in  the same format as it is stored as a date. 
+```SQL
 ALTER TABLE person.info
 ADD dob_date2 varchar(10);
 --CONVERT
 UPDATE person.info
 	SET dob_date2=CONVERT(varchar(10),dob,103);
---By adding style 103 to the CONVERT statement the string uses the dd/mm/yyyy output format. 
+```
+By adding style 103 to the CONVERT statement the string uses the dd/mm/yyyy output format. 
 
---UPDATE can also be used with a where clause to selectively change rows: 
+UPDATE can also be used with a where clause to selectively change rows: 
+```SQL
 ALTER TABLE person.info
 ADD gender varchar(6);
 
@@ -38,41 +46,51 @@ WHERE sex=1;
 UPDATE person.info
 	SET gender='male'
 WHERE sex=0;
+```
+## Mathematical operations
+The arithmetic operators are:
 
---Mathematical operations and functions
---The basic arithmetic operators are:
-+ addition
-- subtraction
-* multiplication
-/ subtraction
-% modulo
+|Operator|Use|
+|---|---|
+| + | addition |
+| - | subtraction |
+| * | multiplication |
+| / | division |
+| % | modulo |
 
+```SQL
 ALTER TABLE questionnaire.recruitment
 ADD smokerPlusExercise int; 
 GO
 UPDATE questionnaire.recruitment
  SET smokerPlusExercise=smoker+exercise;
-
--- If one of the values in an arithmetic operation is missing (i.e. NULL), the result will be NULL.  
+```
+If one of the values in an arithmetic operation is missing (i.e. NULL), the result will be NULL.  
+```SQL 
 ALTER TABLE questionnaire.recruitment
 ADD smokerPlusalcohol int; 
 GO
 UPDATE questionnaire.recruitment
  SET smokerPlusalcohol=smoker+alcohol;
-
---Examples of the other mathematical operators using a SELECT query:  
+```
+Examples of the other mathematical operators using a SELECT query:  
+```SQL
 SELECT *
 	,BP_systolic-BP_diastolic AS subtraction
 	,BP_systolic*BP_diastolic AS multiplication
 	,BP_systolic/BP_diastolic AS division
 	,BP_systolic%BP_diastolic AS modulo
 FROM health.bloodpressure
---Note that the division results are all 1 or 2. This has happened, because both BP_systolic and BP_diastolic have data type int and therefore the resulting column is also an int. To get a result with decimals, one or both columns need to be converted into numeric data type first:  
+```
+Note that the division results are all 1 or 2. This has happened, because both BP_systolic and BP_diastolic have data type int and therefore the resulting column is also an int. To get a result with decimals, one or both columns need to be converted into numeric data type first:  
+```SQL
 SELECT *
 	,CAST(BP_systolic AS NUMERIC(4,1))/CONVERT(numeric(5,2),BP_diastolic) AS division_decimals
 FROM health.bloodpressure
---The result is shown with a greater number of decimal places than specified in the CAST or CONVERT statement. This link https://docs.microsoft.com/en-us/sql/t-sql/data-types/precision-scale-and-length-transact-sql?view=sql-server-2017 shows how the precision is set for different arithmetic operations. For divisions the minimum precision is 6 decimal places. 
---Mathematical functions
+```
+The result is shown with a greater number of decimal places than specified in the CAST or CONVERT statement. This link https://docs.microsoft.com/en-us/sql/t-sql/data-types/precision-scale-and-length-transact-sql?view=sql-server-2017 shows how the precision is set for different arithmetic operations. For divisions the minimum precision is 6 decimal places. 
+
+## Mathematical functions
 --ABS absolute value of a number
 SELECT*
 	,ABS(temperature) as abs_temp
