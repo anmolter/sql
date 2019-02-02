@@ -235,7 +235,7 @@ SELECT *
 FROM health.bloodpressure
 ```
 ## Random numbers
---The RAND function will return a pseudo-random number between 0 and 1.
+The RAND function will return a pseudo-random number between 0 and 1.
 ```SQL
 SELECT *
 	,RAND(100) AS random
@@ -415,9 +415,13 @@ FROM person.info;
 The most common logical expressions are conditional statements (aka if...else statements). SQL Server uses the CASE syntax for conditional statements.
 
 CASE 'name of a column to be checked or can be left blank'
+
 WHEN 'condition to be checked'
-THEN 'what to do if condition is true'
+
+THEN 'what to do if condition is true
+
 ELSE 'what to do if condition is false, this is optional, if no else option is specified, cells where the condition is false will be set to NULL'
+
 END
 
 You can use multiple WHEN ... THEN... statements.
@@ -455,7 +459,8 @@ FROM health.physical
 Add a column to the person.info table called postcode8. In this column show the postcode with 8 characters,i.e. if a postcode is already 8 characters long, copy it as is, if it is shorter add more whitespace to the whitespace in the middle, so that it becomes 8 characters long.
 <details>
 	<summary>Click to see solution</summary>
-	
+
+```SQL	
 ALTER TABLE person.info
 ADD postcode8 varchar(8) NULL;
 GO
@@ -469,7 +474,8 @@ UPDATE person.info
 
 SELECT *
 	,LEN(postcode8)
-FROM person.info
+FROM person.info;
+```
 
 <\details>
 
