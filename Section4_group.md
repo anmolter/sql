@@ -143,7 +143,7 @@ FROM env.pollutant
 WHERE subjectID<10;
 ```
 
-## Percentiles
+### Percentiles
 The above code showed that the RANK and DENSE_RANK functions can be used to add the rank of each cell as an integer. The PERCENT_RANK and CUME_DIST functions can be used to calculate the rank as a percentage. PERCENT_RANK calculates the percentage of values less than the current value in the window. This excludes the highest values in the window, which will always be assigned 1. The CUME_DIST() function calculates the percentage of values less than or equal to the current value in the group.  
 ```SQL
 SELECT*
