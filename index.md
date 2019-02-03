@@ -1,13 +1,15 @@
 # Introduction to SQL
 
-[Section 1](Section1_create.md)
+## Table of contents
 
-[Section 2](Section2_select.md)
+[1. Creating tables](Section1_create.md)
 
-[Section 3](Section3_update.md)
+[2. Select queries](Section2_select.md)
 
-[Section 4](Section4_group.md)
+[3. Update queries](Section3_update.md)
 
-[Section 5](Section5_join.md)
+[4. Aggregating data](Section4_group.md)
 
-[Section 6](Section6_cte.md)
+[5. Joins](Section5_join.md)
+
+[6. Combining queries](Section6_cte.md)
