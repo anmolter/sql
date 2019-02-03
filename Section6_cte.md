@@ -246,3 +246,7 @@ WHERE poll.vDateTime>DATEADD(minute,10,tfinal.morningTime) AND poll.vDateTime<DA
 GROUP BY tfinal.subjectID,tfinal.repVisit
 ```
 
+[Previous: 5. Joining data](Section5_join.md)
+
+
+[Table of contents](index.md)
