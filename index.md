@@ -10,6 +10,6 @@
 
 [4. Aggregating data](Section4_group.md)
 
-[5. Joins](Section5_join.md)
+[5. Joining data](Section5_join.md)
 
 [6. Combining queries](Section6_cte.md)
