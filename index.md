@@ -1,3 +1,3 @@
 # sql
 Introduction to SQL
-[GitHub](http://github.com)
+[Section 1](Section1_create.md)
