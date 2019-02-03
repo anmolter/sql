@@ -1,4 +1,4 @@
-# 5. Joins
+# 5. Joining data
 ## Connect to database
 ```SQL
 USE ExampleDatabase;
@@ -247,3 +247,10 @@ ORDER BY a.subjectID,d.vDateTime
 ```
 	
 </details>
+
+
+[Previous: 4. Aggregating data](Section4_group.md)
+
+[Next: 6. Combining queries](Section6_cte.md)
+
+[Table of contents](index.md)
