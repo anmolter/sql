@@ -479,4 +479,9 @@ FROM person.info;
 
 </details>
 
+[Previous: 2. Select queries](Section2_select.md)
 
+[Next: 4. Aggregating data](Section4_group.md)
+
+
+[Table of contents](index.md)
