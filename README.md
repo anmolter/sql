@@ -1,2 +1,0 @@
-# sql
-Introduction to SQL
