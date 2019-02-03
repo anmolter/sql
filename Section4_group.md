@@ -174,3 +174,9 @@ SELECT *
 	,PERCENTILE_DISC(0.5) WITHIN GROUP(ORDER BY pulse) OVER(PARTITION BY subjectID) As percDiscFunc2
 FROM health.bloodpressure
 ```
+
+[Previous: 3. Update queries](Section3_update.md)
+
+[Next: 5. Join](Section5_join.md)
+
+[Table of contents](index.md)
