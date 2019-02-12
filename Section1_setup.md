@@ -1,4 +1,4 @@
-# Set up 
+# 1. Set up 
 
 ## Before you start
 Got to [https://github.com/anmolter/sql](https://github.com/anmolter/sql) and download the following files to your P drive: 
