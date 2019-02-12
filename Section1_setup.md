@@ -124,4 +124,7 @@ multiple lines*/
 ```
 It is good practice to finish code blocks with a **;** . However, code will often work without it. GO can be used to separate code batches. It is also good practice, but code will often work without it.   
 
-[Next: 2. Creating tables](Section2_select.md)
+[Next: 2. Creating tables](Section2_create.md)
+
+
+[Table of contents](index.md)
