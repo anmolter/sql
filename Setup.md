@@ -84,3 +84,32 @@ ALTER DATABASE [MyFirstDB] SET RECOVERY SIMPLE;
 GO
 ```
 
+Select all of the code in the Query window, then click the *Execute* button or press F5. A messages window will appear, stating whether the code has been executed successfully. The bar at the bottom confirms that the Query was executed successfully and the second field from the right shows the time it took to execute the query. 
+
+![](/images/NewDB10.JPG)
+
+Got to the Oject Explorer pane and right click *Databases*. Click Refresh. MyFirstDB should now be listed under Databases. 
+
+![](/images/NewDB11.jpg)
+
+Right click *MyFirstDB*, then click Properties. Under Select a page on the left click on *General*. Under *Database* in the main pane look at the *Owner* field. 
+
+![](/images/NewDB12.JPG)
+
+In the New Database window the owner was set to *sa* (see above), but here it is set to the default user. This is a bug when using syntax to create the database, and would not have happened, if you had simply clicked OK on the New Database window. However, this can easily be fixed. Click Cancel to close the Database Properties window. Click on the Query window. Scroll to the bottom of the windwo to enter new code. Type in the following code: 
+
+```SQL
+USE [MyFirstDB];
+ALTER AUTHORIZATION ON DATABASE::[MyFirstDB] TO [sa];
+```
+Select the code and execute it (Execute button or F5). In the Object Explorer pane right click on *MyFirstDB* and open the Database Properties window. You can see that the owner has now changed to *sa*. 
+
+![](/images/NewDB13.JPG)
+
+## Recommended settings for the Query window
+In the Menu basr of SSMS click on Tools > Options. In the left hand pane double click *Text Editor*, then click on *Transact-SQL*. Check that the boxes next to *Word wrap* and *Line numbers* are ticked. Click OK. This should make the syntax easier to read. 
+
+![](/images/options.JPG)
+
+
+
