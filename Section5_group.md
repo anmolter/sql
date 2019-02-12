@@ -175,8 +175,8 @@ SELECT *
 FROM health.bloodpressure
 ```
 
-[Previous: 3. Update queries](Section3_update.md)
+[Previous: 4. Update queries](Section4_update.md)
 
-[Next: 5. Join](Section5_join.md)
+[Next: 6. Join](Section6_join.md)
 
 [Table of contents](index.md)
