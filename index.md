@@ -2,14 +2,16 @@
 
 ## Table of contents
 
-[1. Creating tables](Section1_create.md)
+[1. Set up](Section1_setup.md)
 
-[2. Select queries](Section2_select.md)
+[2. Creating tables](Section2_create.md)
 
-[3. Update queries](Section3_update.md)
+[3. Select queries](Section3_select.md)
 
-[4. Aggregating data](Section4_group.md)
+[4. Update queries](Section4_update.md)
 
-[5. Joining data](Section5_join.md)
+[5. Aggregating data](Section5_group.md)
 
-[6. Combining queries](Section6_cte.md)
+[6. Joining data](Section6_join.md)
+
+[7. Combining queries](Section7_cte.md)
