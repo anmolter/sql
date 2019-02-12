@@ -15,3 +15,10 @@
 [6. Joining data](Section6_join.md)
 
 [7. Combining queries](Section7_cte.md)
+
+
+## Before you start
+Got to [https://github.com/anmolter/sql/data](https://github.com/anmolter/sql/data) and download the following files to your P drive: 
+- chick_wide.csv
+- chick_long.csv
+- ExampleDatabase.bak
