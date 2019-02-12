@@ -1,4 +1,4 @@
-# 2. Select Queries
+# 3. Select Queries
 ## Connect to database
 First of all, tell SQL Server to use the ExampleDatabase.
 ```SQL
