@@ -1,4 +1,4 @@
-# 3. Update queries and built-in functions
+# 4. Update queries and built-in functions
 ## Connect to database
 ```SQL
 USE ExampleDatabase;
