@@ -17,5 +17,5 @@ aux_links:
     - "//github.com/anmolter/sql"
 
 # Color scheme currently only supports "dark" or nil (default)
-color_scheme: nil
+color_scheme: "dark"
 
