@@ -1,21 +1,4 @@
 remote_theme: pmarsceill/just-the-docs
 highlighter: rouge
 
-title: sql
-description: Introduction to SQL
-baseurl: "/sql/"
-url: https://anmlter.github.io"
-
-permalink: pretty
-exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
-
-search_enabled: true
-
-# Aux links for the upper right navigation
-aux_links:
-  "Just the Docs on GitHub":
-    - "//github.com/anmolter/sql"
-
-# Color scheme currently only supports "dark" or nil (default)
-color_scheme: "dark"
 
