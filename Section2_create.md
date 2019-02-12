@@ -1,4 +1,4 @@
-# 1. Creating Tables
+# 2. Creating Tables
 
 ### Connect to database
 First we need to tell SQL which database we are working in.
