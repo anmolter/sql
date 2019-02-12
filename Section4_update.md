@@ -480,9 +480,9 @@ FROM person.info;
 </details>
 
 
-[Previous: 2. Select queries](Section2_select.md)
+[Previous: 3. Select queries](Section3_select.md)
 
-[Next: 4. Aggregating data](Section4_group.md)
+[Next: 5. Aggregating data](Section5_group.md)
 
 
 [Table of contents](index.md)
