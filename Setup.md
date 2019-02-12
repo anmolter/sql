@@ -107,9 +107,21 @@ Select the code and execute it (Execute button or F5). In the Object Explorer pa
 ![](/images/NewDB13.JPG)
 
 ## Recommended settings for the Query window
-In the Menu basr of SSMS click on Tools > Options. In the left hand pane double click *Text Editor*, then click on *Transact-SQL*. Check that the boxes next to *Word wrap* and *Line numbers* are ticked. Click OK. This should make the syntax easier to read. 
+In the Menu bar of SSMS click on Tools > Options. In the left hand pane double click *Text Editor*, then click on *Transact-SQL*. Check that the boxes next to *Word wrap* and *Line numbers* are ticked. Click OK. This should make the syntax easier to read. 
 
 ![](/images/options.JPG)
 
+## SQL Language
+SQL Server uses Transact SQL (T-SQL). T-SQL is **not case sensitive** and **not indent/space sensitive**. __--__ are used to add comments to code in the same row. To add blocks of comment use /* *text* */
+
+```SQL
+-- This is a comment
+-- This is another comment
+/* This is a 
+block comment, 
+i.e. it goes over 
+multiple lines*/
+```
+It is good practice to finish code blocks with a **;** . However, code will often work without it. GO can be used to separate code batches. It is also good practice, but code will often work without it.   
 
 
