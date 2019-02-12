@@ -1,4 +1,4 @@
-# 4. Aggregating data
+# 5. Aggregating data
 ## Connect to database
 ```SQL
 USE ExampleDatabase;
