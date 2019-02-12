@@ -264,6 +264,10 @@ In the Object Explorer right click on Databases, then click Restore Database... 
 
 ExampleDatabase contains data from a fictious study (the "measured" values in this study are random numbers!). In this study the effect of temperature and pollution on blood pressure is measured. The study has recruited 100 participants (see person.info) and each participant has to complete 4 repeat visits (see person.schedule). During each repeat visit the participant carrys two personal monitors, which continuously measure temperature (env.temperature)and a pollutant (env.pollutant). During each repeat visit the participant's blood pressure is measured three times, i.e. in the morning, midday and in the evening (health.bloodpressure). At the end of each repeat visit the participant completes a questionnaire on smoking and exercise (questionnaire.visit) and smokers list the times when they smoked a cigarette (questionnaire.cigarettes). Before their first repeat visit, each participant has already completed a baseline questionnaire (questionnaire.recruitment) and their height and weight was measured (health.physical). In addition to these personal measurements, the researcher has also collected daily average temperatures from a Met Office monitor for a whole year (env.centralweather). Feel free to explore the columns, keys and properties of each table.    
 
-[Next: 2. Select queries](Section2_select.md)
+[Previous: 1. Set up](Section1_setup.md) 
 
+[Next: 3. Select queries](Section3_select.md) 
+
+
+[Table of contents](index.md)
 
