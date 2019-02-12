@@ -259,6 +259,11 @@ VALUES (
 SELECT*
 FROM subject.chick_long;
 ```
+## Backup database
+In the Object Explorer right click on MyFirstDB, then click Tasks > Back Up... . The box under destination shows the directory, where the backup file will be saved to. If you are happy with the destination shown, click OK. To change the destination, click Add... .A new window called Select Backup Destination will open. Click the ... button and then navigate to the directory, where you would like to save the backup. Then enter a file name for your backup with a .bak extension. Click OK, click OK. The box under Destination will show two destinations, the default one and the newly added one. If you only want to save a backup to the newly added destiantion, click the default one and then click remove. Then click OK to backup the database. Depending on the size of the database, this amy take a while. 
+
+![](/images/backup.JPG)
+
 ## Restore database from backup
 In the Object Explorer right click on Databases, then click Restore Database... . Under Source select device, then click the browse button. In the new window click Add. Navigate to the location where you have saved ExampleData.bak, click on ExampleData.bak, then click OK. Click OK, then click Cancel. In the Object Explorer right click on Databases, then click Refresh. A new database called ExampleDatabase should appear. Click on the + next to ExampleDatabase, then click on the + next to DatabaseDiagrams, then doubleclick on dbo.Object_Model_Diagram. A diagram showing the relationships between all the tables should open. 
 
