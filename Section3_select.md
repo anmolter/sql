@@ -397,9 +397,9 @@ SELECT*
 FROM #missed_appointments;  
 ```
 
-[Previous: 1. Creating tables](Section1_create.md) 
+[Previous: 2. Creating tables](Section2_create.md) 
 
-[Next: 3. Update queries](Section3_update.md) 
+[Next: 4. Update queries](Section4_update.md) 
 
 
 [Table of contents](index.md)
