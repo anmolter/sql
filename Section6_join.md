@@ -82,8 +82,12 @@ FROM person.info as tableA
 JOIN questionnaire.recruitment as tableB
 ON tableA.subjectID=tableB.subjectID
 ```
-There a several different types of joins. See Venn diagrams in powerpoint. 
+There a several different types of joins. (Example diagrams are taken from: https://www.codeproject.com/Articles/33052/Visual-Representation-of-SQL-Joins )
+
 ### INNER JOIN
+
+![](/images/inner_join.JPG)
+
 If JOIN is used without any additional keywords it defaults to being an inner join. An inner join will only keep rows that are in both tables.
 ```SQL
 SELECT *
@@ -111,6 +115,9 @@ INNER JOIN questionnaire.visit as b
 ```
 
 ### LEFT JOIN
+
+![](/images/left_join.JPG)
+
 A left join keeps everything in table A, regardless of whether it has a match in table B. It adds everything from table B that has a match in table A. If table B has multiple rows that match the same row in table A (i.e. there is a one-to-many relationship), all matching rows from table B will be added and rows from table A will be repeated.
 Example of join with missing information table B:
 ```SQL
@@ -129,6 +136,9 @@ LEFT JOIN health.bloodpressure as b
 	ON a.subjectID=b.subjectID AND a.repVisit=b.rep
 ```
 ### LEFT JOIN without intersection
+
+![](/images/left_no_intersection.JPG)
+
 To call this a join is a bit misleading, because it essentially removes all rows from table A that are in table B. Nothing is added from table B and it adds NULL values for the columns in table B.
 ```SQL
 SELECT a.*
@@ -149,6 +159,9 @@ LEFT JOIN health.bloodpressure as b
 WHERE b.subjectID IS NULL AND b.rep IS NULL
 ```
 ### RIGHT JOIN
+
+![](/images/right_join.JPG)
+
 A right join keeps everything in table B, regardless of whether it has a match in table A. It adds everything from table A that has a match in table B. If table A has multiple rows that match the same row in table B, all matching rows from table A will be added and rows from table B will be repeated. The exact same result will be produced by using a left join and switching table A and table B, so a right join is rarely necessary.
 ```SQL
 SELECT a.*
@@ -158,6 +171,9 @@ RIGHT JOIN env.centralweather as b
 	ON a.vDate=b.date
 ```
 ### RIGHT JOIN without intersection
+
+![](/images/right_no_intersect.JPG)
+
 This is the same as a LEFT JOIN without intersection, but in this case everything from table B is removed that is in table A. Nothing is added from table A and it adds NULL values in the columns from table A. 
 ```SQL
 SELECT a.*
@@ -168,6 +184,9 @@ RIGHT JOIN env.centralweather as b
 WHERE a.vDate IS NULL 
 ```
 ### FULL JOIN
+
+![](/images/full_join.JPG)
+
 Returns all rows from both tables. If the join condition has no match, i.e. a row has no correspnding row, NULL values are inserted. 
 ```SQL
 SELECT a.*
@@ -177,6 +196,9 @@ FULL JOIN #tableB AS b
 	ON a.subjectID=b.subjectID
 ```
 ### FULL JOIN without intersection
+
+![](/images/full_no_intersect.JPG)
+
 This returns all rows from table A and all rows from table B, but removes rows that are in both tables. 
 ```SQL
 SELECT a.*
