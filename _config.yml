@@ -1,3 +1,14 @@
 remote_theme: pmarsceill/just-the-docs
 highlighter: rouge
 
+plugins:
+- jekyll-feed
+- jekyll-redirect-from
+- jekyll-seo-tag
+- jekyll-sitemap
+- jekyll-avatar
+- jemoji
+- jekyll-mentions
+- jekyll-include-cache
+
+
