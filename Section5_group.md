@@ -3,6 +3,8 @@
 ```SQL
 USE ExampleDatabase;
 ```
+## Aggregate functions
+
 SQL Server is not designed for statistical analyses; however, it does have basic aggregate functions built in that provide descriptive statistics. When aggregate functions are used in a simple SELECT query (i.e. without a group_by or window function), they will calculate a value for the entire column. All aggregate functions have an optional ALL or DISTINCT statement at the beginning. If nothing is specified, ALL will used, which means all values will be used. If DISTINCT is specified, only unique values will be used. 
 ```SQL
 SELECT COUNT(ALL smoker) AS allValues --counts number of values
