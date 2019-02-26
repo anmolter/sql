@@ -209,6 +209,11 @@ FULL JOIN #tableB AS b
 WHERE a.subjectID IS NULL OR b.subjectID IS NULL
 ```
 ### CROSS JOIN
+
+![](/images/cross_join.JPG)
+
+(Image source: https://www.tutorialgateway.org/sql-cross-join/ )
+
 A cross join produces the cartesian product of two tables. This means each row in table A is joined to each row in table B. Cross joins can result in very large tables, so they should be used very carefully.
 ```SQL
 SELECT DISTINCT(repVisit) as rep
