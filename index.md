@@ -21,4 +21,6 @@
 Got to [https://github.com/anmolter/sql/data](https://github.com/anmolter/sql/data) and download the following files to your P drive: 
 - chick_wide.csv
 - chick_long.csv
-- ExampleDatabase.bak
+- ExampleDatabase.zip
+
+Unzip ExampleDatabase.zip to extract ExampleDatabase.bak. 
