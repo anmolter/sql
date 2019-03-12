@@ -22,7 +22,7 @@ SSMS will initially look like this:
 
 ![](/images/launch.JPG)
 
-On the left hand side is the Object Explorer. This shows the server that SSMS is connected to. In this case this is a local server, called Teaching. Click on the + nex to Databases. Currently there are no databases on this server other than the System Databases. Typically, you should leave the System  Databases. However, it should be noted that temporary tables are stored in tempdb during a session (at the end of a session all tables in tempdb are dropped, i.e. they are deleted).
+On the left hand side is the Object Explorer. This shows the server that SSMS is connected to. In this case this is a local server, called Teaching. Click on the + next to Databases. Currently there are no databases on this server other than the System Databases. Typically, you should leave the System  Databases. However, it should be noted that temporary tables are stored in tempdb during a session (at the end of a session all tables in tempdb are dropped, i.e. they are deleted).
 
 ![](/images/ObjectExplorer.jpg)
 
