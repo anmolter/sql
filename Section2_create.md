@@ -260,7 +260,7 @@ SELECT*
 FROM subject.chick_long;
 ```
 ## Backup a database
-In the Object Explorer right click on MyFirstDB, then click Tasks > Back Up... . The box under destination shows the directory, where the backup file will be saved to. If you are happy with the destination shown, click OK. To change the destination, click Add... .A new window called Select Backup Destination will open. Click the ... button and then navigate to the directory, where you would like to save the backup. Then enter a file name for your backup with a .bak extension. Click OK, click OK. The box under Destination will show two destinations, the default one and the newly added one. If you only want to save a backup to the newly added destiantion, click the default one and then click remove. Then click OK to backup the database. Depending on the size of the database, this amy take a while. 
+In the Object Explorer right click on MyFirstDB, then click Tasks > Back Up... . The box under destination shows the directory, where the backup file will be saved to. If you are happy with the destination shown, click OK. To change the destination, click Add... .A new window called Select Backup Destination will open. Click the ... button and then navigate to the directory, where you would like to save the backup. Then enter a file name for your backup with a .bak extension. Click OK, click OK. The box under Destination will show two destinations, the default one and the newly added one. If you only want to save a backup to the newly added destiantion, click the default one and then click remove. Then click OK to backup the database. Depending on the size of the database, this may take a while. 
 
 ![](/images/backup.JPG)
 
