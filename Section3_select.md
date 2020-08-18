@@ -36,7 +36,7 @@ SELECT subjectID
 	,dob DateOfBirth
 FROM person.info;
 ```
-However, for readibility it is often better to include AS. Aliases can also be used to assign temporary names to tables, which is particularly useful in join queries, which will be explained in a lter section.
+However, for readibility it is often better to include AS. Aliases can also be used to assign temporary names to tables, which is particularly useful in join queries, which will be explained in a later section.
 ## Where clauses
 The SELECT part of a query determines, which columns to get. To get a subset of rows a WHERE clause is added after the name of the table. For example, to select all current smokers from the questionnaire.recruitment table:
 ```SQL
