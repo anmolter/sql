@@ -82,7 +82,7 @@ Select all of the code in the Query window, then click the *Execute* button or p
 
 ![](/images/NewDB10.JPG)
 
-Got to the Oject Explorer pane and right click *Databases*. Click Refresh. MyFirstDB should now be listed under Databases. 
+Got to the Object Explorer pane and right click *Databases*. Click Refresh. MyFirstDB should now be listed under Databases. 
 
 ![](/images/NewDB11.jpg)
 
